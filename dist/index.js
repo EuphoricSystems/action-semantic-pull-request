@@ -36869,8 +36869,8 @@ module.exports = async function run() {
       githubBaseUrl,
       ignoreLabels
     } = parseConfig();
-
-    const client = github.getOctokit(process.env.GITHUB_TOKEN, {
+    const githubToken = core.getInput("GITHUB_TOKEN", {required: true})
+    const client = github.getOctokit(githubToken, {
       baseUrl: githubBaseUrl
     });
 
