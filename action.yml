@@ -1,5 +1,6 @@
 name: semantic-pull-request
 author: Jan Amann <jan@amann.work>
+
 description: Ensure your PR title matches the Conventional Commits spec (https://www.conventionalcommits.org/).
 runs:
   using: 'node20'
@@ -7,6 +8,7 @@ runs:
 branding:
   icon: 'shield'
   color: 'green'
+
 inputs:
   types:
     description: "Provide custom types (newline delimited) if you don't want the default ones from https://www.conventionalcommits.org."
@@ -47,4 +49,8 @@ inputs:
     required: false
   wip:
     description: "For work-in-progress PRs you can typically use draft pull requests from Github. However, private repositories on the free plan don't have this option and therefore this action allows you to opt-in to using the special '[WIP]' prefix to indicate this state. This will avoid the validation of the PR title and the pull request checks remain pending. Note that a second check will be reported if this is enabled."
+    required: false
+  GITHUB_TOKEN:
+    description: "The GitHub access token (e.g. secrets.GITHUB_TOKEN) used to create or update the comment. This defaults to {{ github.token }}."
+    default: "${{ github.token }}"
     required: false
